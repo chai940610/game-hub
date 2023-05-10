@@ -10,9 +10,9 @@ function App() {
       <NavBar />
     </GridItem>
     <Show above="lg"> {/* show below means the aside will occur below 1024px, if above will show above 1024px */}
-      <GridItem area='aside' bg='gold'>Aside</GridItem>
+      <GridItem area='aside'>Aside</GridItem>
     </Show>
-    <GridItem area='main' bg='dodgerblue'>Main</GridItem>
+    <GridItem area='main'>Main</GridItem>
   </Grid>
 }
 
