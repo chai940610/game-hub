@@ -2,9 +2,10 @@ import { useState,useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Game{
+export interface Game{
     id:number;
     name:string;
+    background_image:string;
 }
 
 interface kuku{ //remember that count and number is taken from this website: https://api.rawg.io/docs/#operation/games_list
@@ -24,7 +25,7 @@ const useGames=()=>{
             if (err instanceof CanceledError) return;
             setError(err.message)});
         //cleanup function
-        return ()=>controller.abort();
+        return ()=>controller.abort();  //this is important, know what is cleanup function? when the component unmounted, it means when user go to other tab, mean navigate away from the page
     },[]);
     return{games,error};
 }
