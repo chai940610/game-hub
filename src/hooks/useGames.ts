@@ -9,10 +9,12 @@ export interface Platform{
 }
 
 export interface Game{
+    //all these attribute is taken from the API
     id:number;
     name:string;
     background_image:string;
     parent_platforms:{platform:Platform}[]
+    metacritic:number;
 }
 
 interface kuku{ //remember that count and number is taken from this website: https://api.rawg.io/docs/#operation/games_list
@@ -34,6 +36,6 @@ const useGames=()=>{
         //cleanup function
         return ()=>controller.abort();  //this is important, know what is cleanup function? when the component unmounted, it means when user go to other tab, mean navigate away from the page
     },[]);
-    return{games,error};
+    return{games,error};    //this two will go to the GameGrid.tsx function
 }
 export default useGames;

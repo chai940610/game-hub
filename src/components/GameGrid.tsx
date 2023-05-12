@@ -4,7 +4,7 @@ import GameCard from './GameCard';
 
 
 const GameGrid = () => {
-    const{games,error}=useGames();
+    const{games,error}=useGames();  //the useGames from useGames.ts go to this GameGrid
   return (
     <>
     {error && <Text>{error}</Text>}

@@ -27,7 +27,7 @@ const PlatformIconList = ({platforms}:Props) => {
   return (
     <HStack marginY={1}>
     {platforms.map((platform)=>(
-      <Icon as={iconMap[platform.slug]} color='gray.500' />
+      <Icon as={iconMap[platform.slug]} color='gray.500' />   //The as prop specifies the type of element that the icon will be rendered as
     ))} {/*which mean each structure has platform */}
     </HStack>
   )
