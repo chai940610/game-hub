@@ -11,7 +11,7 @@ interface Props{
 
 const GameCard = ({game}:Props) => {
   return (
-     <Card width='300px' borderRadius={10} overflow='hidden'>  {/* why need overflow, because these image is too large, borderRadius is to let the corner not too sharp, when I set to 10, only the bottom change to not sharp, but upside left and right didn't, so need overflow */}
+     <Card >  {/* why need overflow, because these image is too large, borderRadius is to let the corner not too sharp, when I set to 10, only the bottom change to not sharp, but upside left and right didn't, so need overflow */}
         <Image src={getCroppedImageUrl(game.background_image)} />  {/*we are downloading smaller images, game.background_image exaple link, https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg */} 
         <CardBody>
             <Heading fontSize='2xl'>

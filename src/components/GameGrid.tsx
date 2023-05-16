@@ -2,6 +2,7 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   const { games, error, isLoading } = useGames(); //the useGames from useGames.ts go to this GameGrid, and isLoading also taken from useGames.ts
@@ -17,9 +18,15 @@ const GameGrid = () => {
         {" "}
         {/* remember that sm is small, md is medium, lg is large, xl is extra large, which mean if big devices they will go for large one */}
         {isLoading &&
-          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+          skeletons.map((skeleton) => (
+            <GameCardContainer>
+              <GameCardSkeleton key={skeleton} />
+            </GameCardContainer>
+          ))}
         {games.map((cuci) => (
+        <GameCardContainer>
           <GameCard key={cuci.id} game={cuci} />
+        </GameCardContainer>
         ))}
       </SimpleGrid>
     </>
