@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, Grid, GridItem,Show } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
 import GameGrid from './components/GameGrid'
+import GenreList from './components/GenreList'
 
 function App() {
   return <Grid templateAreas={{ //templateAreas is property that defines two different grid layouts,one for mobile and one for larger screen
@@ -11,7 +12,7 @@ function App() {
       <NavBar />
     </GridItem>
     <Show above="lg"> {/* show below means the aside will occur below 1024px, if above will show above 1024px */}
-      <GridItem area='aside'>Aside</GridItem>
+      <GridItem area='aside'><GenreList /></GridItem>
     </Show>
     <GridItem area='main'>
       <GameGrid />
