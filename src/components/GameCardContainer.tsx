@@ -12,5 +12,6 @@ const GameCardContainer = ({children}:Props) => {
     </Box>
   )
 }
+//for my understanding, the children just like nothing, in this case <GameCardSkeleton key={skeleton} /> will cover by Box
 
 export default GameCardContainer

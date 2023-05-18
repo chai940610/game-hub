@@ -6,7 +6,7 @@ import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   const { data, error, isLoading } = useGames(); //the useGames from useGames.ts go to this GameGrid, and isLoading also taken from useGames.ts
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [34,34100,11,13,1314,26]; //it can be any number, since there is 6 number in array, it will take 6 skeletons to display
   return (
     <>
       {error && <Text>{error}</Text>}
@@ -22,7 +22,7 @@ const GameGrid = () => {
             <GameCardContainer>
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
-          ))}
+          ))}{/*after loading equal to false */}
         {data.map((cuci) => (
         <GameCardContainer>
           <GameCard key={cuci.id} game={cuci} />

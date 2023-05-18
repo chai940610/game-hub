@@ -1,7 +1,7 @@
 
 import useData from "./useData";
 
-export interface Genre {
+export interface Genre {  //this is results https://api.rawg.io/docs/#operation/genres_list this website, and see the results
   id: number;
   name: string;
   image_background:string;
