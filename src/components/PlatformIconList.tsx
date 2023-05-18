@@ -5,12 +5,14 @@ import {SiNintendo} from 'react-icons/si';
 import {BsGlobe} from 'react-icons/bs';
 import { Icon } from '@chakra-ui/react';
 import { HStack } from '@chakra-ui/react';
+import {IconType} from "react-icons";
+
 interface Props {
     platforms:Platform[]
 }
 
 const PlatformIconList = ({platforms}:Props) => {
-  const iconMap = {
+  const iconMap:{[key:string]:IconType} = {
   pc: FaWindows,
   playstation: FaPlaystation,
   xbox:FaXbox,
@@ -25,7 +27,7 @@ const PlatformIconList = ({platforms}:Props) => {
   return (
   <HStack marginY={1}>
   {platforms.map((platform, i) => (
-  <Icon as={iconMap[platform.slug]} key={i} color='gray.500' />   //The as prop specifies the type of element that the icon will be rendered as
+  <Icon as={iconMap[platform.slug]} key={platform.id} color='gray.500' />   //The as prop specifies the type of element that the icon will be rendered as
   ))} {/*which mean each structure has platform */}
   </HStack>
   )

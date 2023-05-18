@@ -2,6 +2,7 @@
 // import apiClient from "../services/api-client";
 // import { CanceledError } from "axios";
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface Platform{
     id:number;
@@ -23,7 +24,7 @@ export interface Game{
 //     results:Game[]  //because the results at this website, https://api.rawg.io/docs/#operation/games_additions_list, you see the results, is array of games, you click it, then it show the properties of games, we just want the ID and the name of the games enough
 // }
 
- const useGames=()=>useData<Game>('/games')
+ const useGames=(selectedGenre:Genre|null)=>useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id])
 //     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
 //     const[error,setError]=useState('');
 //     const[isLoading,setLoading]=useState(false);

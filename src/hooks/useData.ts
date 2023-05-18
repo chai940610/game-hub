@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 import apiClient from "../services/api-client";
 
 
@@ -9,7 +9,7 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-const useData = <T>(endpoint:string) => {
+const useData = <T>(endpoint:string,requestConfig?:AxiosRequestConfig,deps?:any[]) => {
   const [data, setData] = useState<T[]>([]); // so set the Game[]
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ const useData = <T>(endpoint:string) => {
     // before call API
     setLoading(true);
     apiClient
-      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
+      .get<FetchResponse<T>>(endpoint, { signal: controller.signal,...requestConfig })
       .then((res) => {
         setData(res.data.results);
         // when it back set the loading to false
@@ -33,7 +33,7 @@ const useData = <T>(endpoint:string) => {
 
     // cleanup function
     return () => controller.abort(); // this is important, know what is cleanup function? when the component unmounted, it means when user go to other tab, mean navigate away from the page
-  }, []);
+  }, deps?[...deps]:[]);
 
   return { data, error, isLoading };
 };
