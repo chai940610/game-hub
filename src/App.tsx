@@ -5,9 +5,12 @@ import GenreList from './components/GenreList'
 import { Genre } from './hooks/useGenres'
 import { useState } from "react";
 import PlatformSelector from './components/PlatformSelector'
+import { Platform } from './hooks/useGames'
 
 function App() {
   const[selectedGenre,setSelectedGenre]=useState<Genre|null>(null);
+  const [selectedPlatform,setSelectedPlatform]=useState<Platform|null>(null);
+
   return <Grid templateAreas={{ //templateAreas is property that defines two different grid layouts,one for mobile and one for larger screen
     base:`"nav" "main"`,  //for mobile device,two rows one column
     lg:`"nav nav" "aside main"`  //large devices, wider than 1024px, nav nav mean two nav column, aside main mean one aside one main
@@ -25,8 +28,8 @@ function App() {
       <GridItem area='aside' paddingX={5}><GenreList kukubird={selectedGenre} onSelectGenre={(kucing)=>setSelectedGenre(kucing)} /></GridItem>
     </Show>
     <GridItem area='main'>
-      <PlatformSelector />
-      <GameGrid selectedGenre={selectedGenre} />
+      <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(pc)=>setSelectedPlatform(pc)} />
+      <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
     </GridItem>
   </Grid>
 }

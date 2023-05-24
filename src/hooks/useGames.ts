@@ -4,19 +4,19 @@
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
-export interface Platform{
-    id:number;
-    name:string;
-    slug:string;
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
 }
 
-export interface Game{
-    //all these attribute is taken from the API
-    id:number;
-    name:string;
-    background_image:string;    //background_image is a string because it is an website URL, so we called it as string
-    parent_platforms:{platform:Platform}[]
-    metacritic:number;
+export interface Game {
+  //all these attribute is taken from the API
+  id: number;
+  name: string;
+  background_image: string; //background_image is a string because it is an website URL, so we called it as string
+  parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 // interface kuku{ //remember that count and number is taken from this website: https://api.rawg.io/docs/#operation/games_list
@@ -24,9 +24,17 @@ export interface Game{
 //     results:Game[]  //because the results at this website, https://api.rawg.io/docs/#operation/games_additions_list, you see the results, is array of games, you click it, then it show the properties of games, we just want the ID and the name of the games enough
 // }
 
- const useGames=(selectedGenre:Genre|null)=>useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]) //the params is a query parameter, example, https://example.com/search?query=apple&type=fruit, the word query and word type are query parameter, search for the term apple in the category of fruit
-                                                        //games=endpoint, { params: { genres: selectedGenre?.id } }=requestConfig,[selectedGenre?.id]=deps, okay [selectedGenre?.id] when change, which mean if equal to 1, 2 or whatever, the useEffect hook will run in the useData
- //     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) =>
+  useData<Game>(
+    "/games",
+    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+    [selectedGenre?.id, selectedPlatform?.id]
+  ); //the params is a query parameter, example, https://example.com/search?query=apple&type=fruit, the word query and word type are query parameter, search for the term apple in the category of fruit
+//games=endpoint, { params: { genres: selectedGenre?.id } }=requestConfig,[selectedGenre?.id]=deps, okay [selectedGenre?.id] when change, which mean if equal to 1, 2 or whatever, the useEffect hook will run in the useData
+//     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
 //     const[error,setError]=useState('');
 //     const[isLoading,setLoading]=useState(false);
 
@@ -45,7 +53,7 @@ export interface Game{
 //             setError(err.message)
 //             setLoading(false);
 //         });
-            
+
 //         //cleanup function
 //         return ()=>controller.abort();  //this is important, know what is cleanup function? when the component unmounted, it means when user go to other tab, mean navigate away from the page
 //     },[]);

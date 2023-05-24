@@ -4,13 +4,15 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { Genre } from "../hooks/useGenres";
+import { Platform } from "../hooks/useGames";
 
 interface Props{
-  selectedGenre:Genre|null
+  selectedGenre:Genre|null;
+  selectedPlatform:Platform|null;
 }
 
-const GameGrid = ({selectedGenre}:Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre); //the useGames from useGames.ts go to this GameGrid, and isLoading also taken from useGames.ts
+const GameGrid = ({selectedGenre,selectedPlatform}:Props) => {
+  const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform); //the useGames from useGames.ts go to this GameGrid, and isLoading also taken from useGames.ts
   const skeletons = [34,34100,11,13,1314,26]; //it can be any number, since there is 6 number in array, it will take 6 skeletons to display
   return (
     <>
