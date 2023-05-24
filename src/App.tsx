@@ -21,7 +21,7 @@ function App() {
       <NavBar />
     </GridItem>
     <Show above="lg"> {/* show below means the aside will occur below 1024px, if above will show above 1024px */}
-      <GridItem area='aside' paddingX={5}><GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} /></GridItem>
+      <GridItem area='aside' paddingX={5}><GenreList kukubird={selectedGenre} onSelectGenre={(kucing)=>setSelectedGenre(kucing)} /></GridItem>
     </Show>
     <GridItem area='main'>
       <GameGrid selectedGenre={selectedGenre} />

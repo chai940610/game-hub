@@ -24,8 +24,9 @@ export interface Game{
 //     results:Game[]  //because the results at this website, https://api.rawg.io/docs/#operation/games_additions_list, you see the results, is array of games, you click it, then it show the properties of games, we just want the ID and the name of the games enough
 // }
 
- const useGames=(selectedGenre:Genre|null)=>useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id])
-//     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
+ const useGames=(selectedGenre:Genre|null)=>useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]) //the params is a query parameter, example, https://example.com/search?query=apple&type=fruit, the word query and word type are query parameter, search for the term apple in the category of fruit
+                                                        //games=endpoint, { params: { genres: selectedGenre?.id } }=requestConfig,[selectedGenre?.id]=deps, okay [selectedGenre?.id] when change, which mean if equal to 1, 2 or whatever, the useEffect hook will run in the useData
+ //     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
 //     const[error,setError]=useState('');
 //     const[isLoading,setLoading]=useState(false);
 

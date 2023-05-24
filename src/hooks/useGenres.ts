@@ -6,6 +6,8 @@ export interface Genre {  //this is results https://api.rawg.io/docs/#operation/
   name: string;
   image_background:string;
 }
+//Genre id,name and image_background will goes to data of the useData.ts
+
 
 // interface FetchGenresResponse {
 //   count: number;
