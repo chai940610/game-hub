@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Grid, GridItem,Show } from '@chakra-ui/react'
+import { Button, ButtonGroup, Grid, GridItem,HStack,Show } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
 import GameGrid from './components/GameGrid'
 import GenreList from './components/GenreList'
@@ -6,6 +6,7 @@ import { Genre } from './hooks/useGenres'
 import { useState } from "react";
 import PlatformSelector from './components/PlatformSelector'
 import { Platform } from './hooks/useGames'
+import SortSelector from './components/SortSelector'
 
 export interface GameQuery{
   genre:Genre|null;
@@ -15,7 +16,7 @@ export interface GameQuery{
 function App() {
   // const[selectedGenre,setSelectedGenre]=useState<Genre|null>(null);
   // const [selectedPlatform1,setSelectedPlatform]=useState<Platform|null>(null);
-  const[jarum,cinta]=useState<GameQuery>({}as GameQuery)
+  const[jarum,cinta]=useState<GameQuery>({}as GameQuery)  //initial state is {} as GameQuery mean initial value is null
 
   return <Grid templateAreas={{ //templateAreas is property that defines two different grid layouts,one for mobile and one for larger screen
     base:`"nav" "main"`,  //for mobile device,two rows one column
@@ -31,10 +32,13 @@ function App() {
       <NavBar />
     </GridItem>
     <Show above="lg"> {/* show below means the aside will occur below 1024px, if above will show above 1024px */}
-      <GridItem area='aside' paddingX={5}><GenreList kukubird={jarum.genre} onSelectGenre={(babi)=>cinta({...jarum,babi})} /></GridItem>
+      <GridItem area='aside' paddingX={5}><GenreList kukubird={jarum.genre} onSelectGenre={(babi)=>cinta({...jarum,genre:babi})} /></GridItem>
     </Show>
     <GridItem area='main'>
-      <PlatformSelector selectedPlatform={jarum.platform} onSelectPlatform={(pc)=>cinta(...jarum,pc)} />
+      <HStack spacing={5} paddingLeft={2} marginBottom={5}>
+        <PlatformSelector selectedPlatform={jarum.platform} onSelectPlatform={(pc) => cinta({ ...jarum, platform: pc })} />
+        <SortSelector />
+      </HStack>
       <GameGrid  lampu={jarum} /> {/*selectedPlatform={jarum.platform} selectedGenre={jarum.genre} */}
     </GridItem>
   </Grid>
