@@ -1,4 +1,5 @@
 const getCroppedImageUrl=(url:string)=>{
+    if (!url) return '';
     const target='media/';
     const index=url.indexOf(target)+target.length;  //find the location of the media, indexOf(target)=22 and target.length, which mean number of character of media, which is 6
     return url.slice(0,index)+'crop/600/400/'+url.slice(index); //url.slice(0,index)=https://media.rawg.io/ +crop/600/400/, url.slice(index) take the right side item after media/

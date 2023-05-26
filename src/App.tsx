@@ -11,6 +11,7 @@ import SortSelector from './components/SortSelector'
 export interface GameQuery{
   genre:Genre|null;
   platform:Platform|null;
+  abc:string;
 }
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
     <GridItem area='main'>
       <HStack spacing={5} paddingLeft={2} marginBottom={5}>
         <PlatformSelector selectedPlatform={jarum.platform} onSelectPlatform={(pc) => cinta({ ...jarum, platform: pc })} />
-        <SortSelector />
+        <SortSelector sortOrder={jarum.abc} onSelectSortOrder={(abc)=>cinta({...jarum,abc})} />
       </HStack>
       <GameGrid  lampu={jarum} /> {/*selectedPlatform={jarum.platform} selectedGenre={jarum.genre} */}
     </GridItem>
