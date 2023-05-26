@@ -1,6 +1,7 @@
 // import { useState,useEffect } from "react";
 // import apiClient from "../services/api-client";
 // import { CanceledError } from "axios";
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
@@ -25,13 +26,14 @@ export interface Game {
 // }
 
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  // selectedGenre: Genre | null,
+  // selectedPlatform: Platform | null
+  cacing:GameQuery
 ) =>
   useData<Game>(
     "/games",
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    [selectedGenre?.id, selectedPlatform?.id]
+    { params: { genres: cacing.genre?.id, platforms: cacing.platform?.id } },
+    [cacing] /*selectedGenre?.id, selectedPlatform?.id*/ //since I comment it, everytime the gameQuery change, it will refresh the data
   ); //the params is a query parameter, example, https://example.com/search?query=apple&type=fruit, the word query and word type are query parameter, search for the term apple in the category of fruit
 //games=endpoint, { params: { genres: selectedGenre?.id } }=requestConfig,[selectedGenre?.id]=deps, okay [selectedGenre?.id] when change, which mean if equal to 1, 2 or whatever, the useEffect hook will run in the useData
 //     const[games,setGames]=useState<Game[]>([]);  //so set the Game[]
