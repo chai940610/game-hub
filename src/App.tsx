@@ -8,6 +8,7 @@ import PlatformSelector from './components/PlatformSelector'
 import { Platform } from './hooks/useGames'
 import SortSelector from './components/SortSelector'
 import { Flex } from '@chakra-ui/react'
+import GameHeading from './components/GameHeading'
 
 export interface GameQuery{
   genre:Genre|null;
@@ -38,12 +39,15 @@ function App() {
       <GridItem area='aside' paddingX={5}><GenreList kukubird={jarum.genre} onSelectGenre={(babi)=>cinta({...jarum,genre:babi})} /></GridItem>
     </Show>
     <GridItem area='main'>
-      <Flex paddingLeft={2} marginBottom={5}>
-        <Box marginRight={5}>
-          <PlatformSelector selectedPlatform={jarum.platform} onSelectPlatform={(pc) => cinta({ ...jarum, platform: pc })} />
-        </Box>
-        <SortSelector sortOrder={jarum.abc} onSelectSortOrder={(abc)=>cinta({...jarum,abc})} />
-      </Flex>
+      <Box paddingLeft={2}>
+        <GameHeading lol={jarum}/>
+        <Flex marginBottom={5}>
+          <Box marginRight={5}>
+            <PlatformSelector selectedPlatform={jarum.platform} onSelectPlatform={(pc) => cinta({ ...jarum, platform: pc })} />
+          </Box>
+          <SortSelector sortOrder={jarum.abc} onSelectSortOrder={(abc)=>cinta({...jarum,abc})} />
+        </Flex>
+      </Box>
       <GameGrid  lampu={jarum} /> {/*selectedPlatform={jarum.platform} selectedGenre={jarum.genre} */}
     </GridItem>
   </Grid>
