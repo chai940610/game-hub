@@ -22,7 +22,7 @@ const GameGrid = ({lampu}:Props) => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding="10px"
-        spacing={3}
+        spacing={6}
       >
         {" "}
         {/* remember that sm is small, md is medium, lg is large, xl is extra large, which mean if big devices they will go for large one */}
