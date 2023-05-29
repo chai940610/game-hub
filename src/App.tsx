@@ -12,7 +12,8 @@ import { Flex } from '@chakra-ui/react'
 export interface GameQuery{
   genre:Genre|null;
   platform:Platform|null;
-  abc:string;
+  abc:string;     //this is sortOrder
+  kambing:string; //this is search text
 }
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     >
       
     <GridItem area='nav'> {/* the nav, when you are using laptop or pc, this nav will be top left and right, if mobile, it will be on top only */}
-      <NavBar />
+    <NavBar onSearch={(searchText) => cinta({ ...jarum, kambing: searchText })} />  {/*once you search anything in the searchinput, then you go to components find App, you will saw the useState hook*/ }
     </GridItem>
     <Show above="lg"> {/* show below means the aside will occur below 1024px, if above will show above 1024px */}
       <GridItem area='aside' paddingX={5}><GenreList kukubird={jarum.genre} onSelectGenre={(babi)=>cinta({...jarum,genre:babi})} /></GridItem>

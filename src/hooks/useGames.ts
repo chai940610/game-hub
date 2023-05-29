@@ -32,7 +32,7 @@ const useGames = (
 ) =>
   useData<Game>(
     "/games",
-    { params: { genres: cacing.genre?.id, platforms: cacing.platform?.id,ordering:cacing.abc } },
+    { params: { genres: cacing.genre?.id, platforms: cacing.platform?.id,ordering:cacing.abc,search:cacing.kambing } }, //this one is take all our thing to search IN API
     [cacing] /*selectedGenre?.id, selectedPlatform?.id*/ //since I comment it, everytime the gameQuery change, it will refresh the data
   ); //the params is a query parameter, example, https://example.com/search?query=apple&type=fruit, the word query and word type are query parameter, search for the term apple in the category of fruit
 //games=endpoint, { params: { genres: selectedGenre?.id } }=requestConfig,[selectedGenre?.id]=deps, okay [selectedGenre?.id] when change, which mean if equal to 1, 2 or whatever, the useEffect hook will run in the useData
