@@ -18,6 +18,8 @@ export interface Game {
   background_image: string; //background_image is a string because it is an website URL, so we called it as string
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top:number;  //whole number
+  rating:number;  //float, have decimal
 }
 
 // interface kuku{ //remember that count and number is taken from this website: https://api.rawg.io/docs/#operation/games_list
