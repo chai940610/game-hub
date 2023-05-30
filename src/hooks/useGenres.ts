@@ -1,5 +1,6 @@
 
-import useData from "./useData";
+// import useData from "./useData"; old code
+import genres from "../data/genres";
 
 export interface Genre {  //this is results https://api.rawg.io/docs/#operation/genres_list this website, and see the results
   id: number;
@@ -14,7 +15,7 @@ export interface Genre {  //this is results https://api.rawg.io/docs/#operation/
 //   results: Genre[];
 // }
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () => ({data:genres,isLoading:false,error:null});  //useData<Genre>('/genres') old code
 //   const [genres, setGenres] = useState<Genre[]>([]); // so set the Game[]
 //   const [error, setError] = useState("");
 //   const [isLoading, setLoading] = useState(false);
