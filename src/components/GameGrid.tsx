@@ -16,9 +16,10 @@ interface Props{
 const GameGrid = ({lampu}:Props) => {
   const { data, error, isLoading } = useGames(lampu); //the useGames from useGames.ts go to this GameGrid, and isLoading also taken from useGames.ts
   const skeletons = [34,34100,11,13,1314,26]; //it can be any number, since there is 6 number in array, it will take 6 skeletons to display
+  if (error) return <Text>{error}</Text>
   return (
     <>
-      {error && <Text>{error}</Text>}
+      {/* {error && <Text>{error}</Text>} */}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding="10px"

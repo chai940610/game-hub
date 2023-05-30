@@ -3,7 +3,7 @@ import { extendTheme,ThemeConfig } from "@chakra-ui/react";
 const config:ThemeConfig={
     initialColorMode:'dark' //the page initially will be dark, so we need toggle the switch made it become light
 };
- const theme=extendTheme({
+ const theme=extendTheme({  //extendTheme is used to merge the config and colors object into new theme
     config,
     colors:{
         gray:{
